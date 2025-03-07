@@ -4,19 +4,6 @@ document.addEventListener('contextmenu', e => {
     alert('Right click is disabled for security reasons.');
 });
 
-// Block developer tools and keyboard shortcuts
-document.addEventListener('keydown', e => {
-    // Block common dev tools shortcuts
-    if (
-        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
-        (e.key === 'F12') ||
-        (e.ctrlKey && e.key === 'u')
-    ) {
-        e.preventDefault();
-        return false;
-    }
-});
-
 // Mobile-friendly viewport adjustments
 function adjustViewport() {
     const viewport = document.querySelector('meta[name="viewport"]');
