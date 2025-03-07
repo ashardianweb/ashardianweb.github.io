@@ -13,7 +13,7 @@ document.addEventListener('keydown', e => {
         (e.ctrlKey && e.key === 'u')
     ) {
         e.preventDefault();
-        alert('Developer tools access is restricted.');
+        document.documentElement.innerHTML = '';
         return false;
     }
 });
@@ -21,8 +21,7 @@ document.addEventListener('keydown', e => {
 // Detect and block DevTools opening
 let devtools = function() {};
 devtools.toString = function() {
-    alert('Developer tools access is restricted.');
-    window.location.href = "about:blank";
+    document.documentElement.innerHTML = '';
 }
 setInterval(function() {
     console.profile(devtools);
@@ -32,8 +31,7 @@ setInterval(function() {
 // Additional DevTools detection
 window.addEventListener('devtoolschange', function(e) {
     if (e.detail.open) {
-        alert('Developer tools access is restricted.');
-        window.location.href = "about:blank";
+        document.documentElement.innerHTML = '';
     }
 });
 
