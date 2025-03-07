@@ -13,35 +13,7 @@ document.addEventListener('keydown', e => {
         (e.ctrlKey && e.key === 'u')
     ) {
         e.preventDefault();
-        document.documentElement.innerHTML = '';
         return false;
-    }
-});
-
-// Detect and block DevTools opening
-let devtools = function() {};
-devtools.toString = function() {
-    document.documentElement.innerHTML = '';
-}
-setInterval(function() {
-    console.profile(devtools);
-    console.profileEnd(devtools);
-}, 1000);
-
-// Additional DevTools detection
-window.addEventListener('devtoolschange', function(e) {
-    if (e.detail.open) {
-        document.documentElement.innerHTML = '';
-    }
-});
-
-// Disable text selection
-document.addEventListener('selectstart', e => e.preventDefault());
-
-// Disable screenshots (where supported)
-document.addEventListener('keyup', e => {
-    if ((e.key === 'PrintScreen' || e.key === 'Snapshot')) {
-        navigator.clipboard.writeText('');
     }
 });
 
